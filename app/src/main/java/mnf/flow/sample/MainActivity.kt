@@ -18,17 +18,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        var colorsOne = intArrayOf(resources.getColor(R.color.gradientFourStart), resources.getColor(R.color.gradientFourEnd))
+        var colorsOne = intArrayOf(resources.getColor(R.color.gradientFourStart),
+                resources.getColor(R.color.gradientFourEnd),resources.getColor(R.color.gradientFiveStart), resources.getColor(R.color.gradientFiveEnd))
         var colorsTwo = intArrayOf(resources.getColor(R.color.gradientFiveStart), resources.getColor(R.color.gradientFiveEnd))
-        var colorsThree = intArrayOf(resources.getColor(R.color.gradientSixStart), resources.getColor(R.color.gradientSixEnd))
+       // var colorsThree = intArrayOf(resources.getColor(R.color.gradientSixStart), resources.getColor(R.color.gradientSixEnd))
         val context: Context = applicationContext;
 
 
         val flow = Flow(context)
         flow.addFrame(Flow.Orientation.BottomLeft_TopRight,colorsOne,4000)
-        flow.addFrame(Flow.Orientation.BottomLeft_TopRight,colorsTwo,4000)
 
-        flow.addFrame(Flow.Orientation.BottomLeft_TopRight,colorsThree,4000)
+        //flow.addFrame(Flow.Orientation.BottomLeft_TopRight,colorsTwo,4000)
+
+       // flow.addFrame(Flow.Orientation.BottomLeft_TopRight,colorsThree,4000)
         flow.start(relative_layout_container)
 
 

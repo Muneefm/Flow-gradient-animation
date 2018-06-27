@@ -10,16 +10,22 @@ class Flow constructor(context: Context) {
 
     val TAG = "FLOW"
 
-    data class Frame(val orientation: Orientation = Orientation.BottomLeft_TopRight,
-                 val colors: IntArray, val duration: Int = 6000)
+
 
     val framesList: MutableList<Frame> = mutableListOf()
 
 
     fun addFrame(orientation: Orientation, colors: IntArray, duration: Int){
        //val frame = Frame(orientation, colors);
+        val length = colors.size;
+        val indexCollection: Collection<Int>
+
+      // val array: IntArray =  colors.sliceArray()
+
         framesList.add(Frame(orientation, colors, duration))
     }
+    //fun IntArray.sliceArray(indices: Collection<Int>): IntArray (colors)
+
 
     enum class Orientation {
         BottomLeft_TopRight,
@@ -27,13 +33,14 @@ class Flow constructor(context: Context) {
 
     fun start(view: View){
         val animationDrawable = AnimationDrawable()
-        animationDrawable.setEnterFadeDuration(0)
+        animationDrawable.setEnterFadeDuration(1000)
         for (item: Frame in framesList ){
             Log.v(TAG,"Flow start loop ")
 
             val gradient = GradientDrawable(GradientDrawable.Orientation.BL_TR,item.colors)
-            animationDrawable.addFrame(gradient,item.duration);
+            animationDrawable.addFrame(gradient,item.duration)
         }
+
         animationDrawable.setExitFadeDuration(4000)
         view.background = animationDrawable;
         animationDrawable.start()
